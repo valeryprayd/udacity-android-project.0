@@ -1,53 +1,71 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+  Solution to make everything centered yet scrollable comes from
+  http://stackoverflow.com/a/12755540
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     tools:context=".MainActivity">
 
-    <TextView
-        android:textSize="24sp"
-        android:text="@string/layout_title"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp" />
+        android:layout_centerVertical="true">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <Button
-            android:text="@string/layout_spotify_streamer_button"
-            android:onClick="launchSpotifyStreamer"
-            style="@style/ButtonStyle" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:text="@string/layout_title"
+                android:textSize="24sp" />
 
-        <Button
-            android:text="@string/layout_scores_app_button"
-            android:onClick="launchScoresApp"
-            style="@style/ButtonStyle" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <Button
-            android:text="@string/layout_library_app_button"
-            android:onClick="launchLibraryApp"
-            style="@style/ButtonStyle" />
+                <Button
+                    style="@style/ButtonStyle"
+                    android:onClick="launchSpotifyStreamer"
+                    android:text="@string/layout_spotify_streamer_button" />
 
-        <Button
-            android:text="@string/layout_build_it_bigger_button"
-            android:onClick="launchBuildItBigger"
-            style="@style/ButtonStyle" />
+                <Button
+                    style="@style/ButtonStyle"
+                    android:onClick="launchScoresApp"
+                    android:text="@string/layout_scores_app_button" />
 
-        <Button
-            android:text="@string/layout_xyz_reader_button"
-            android:onClick="launchXyzReader"
-            style="@style/ButtonStyle" />
+                <Button
+                    style="@style/ButtonStyle"
+                    android:onClick="launchLibraryApp"
+                    android:text="@string/layout_library_app_button" />
 
-        <Button
-            android:text="@string/layout_capstone_button"
-            android:onClick="launchCapstone"
-            style="@style/CapstoneButtonStyle" />
+                <Button
+                    style="@style/ButtonStyle"
+                    android:onClick="launchBuildItBigger"
+                    android:text="@string/layout_build_it_bigger_button" />
 
-    </LinearLayout>
+                <Button
+                    style="@style/ButtonStyle"
+                    android:onClick="launchXyzReader"
+                    android:text="@string/layout_xyz_reader_button" />
 
-</LinearLayout>
+                <Button
+                    style="@style/CapstoneButtonStyle"
+                    android:onClick="launchCapstone"
+                    android:text="@string/layout_capstone_button" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

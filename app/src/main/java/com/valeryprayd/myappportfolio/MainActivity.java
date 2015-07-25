@@ -2,13 +2,13 @@ package com.valeryprayd.myappportfolio;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private Toast lastToast = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,25 +17,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    protected void onDestroy() {
+        // Cancel previous toast if it exists.
+        if (lastToast != null) {
+            lastToast.cancel();
+        }
+        super.onDestroy();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    private void showToast(String message) {
+        // Cancel previous toast if it exists.
+        if (lastToast != null) {
+            lastToast.cancel();
         }
-
-        return super.onOptionsItemSelected(item);
+        // Create a new one and show it, then save as the last one.
+        lastToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+        lastToast.show();
     }
 
     /**
@@ -43,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view that initiated this call
      */
     public void launchSpotifyStreamer(View view) {
-        Toast.makeText(this, "This button will launch Spotify Streamer!", Toast.LENGTH_SHORT).show();
+        showToast(getString(R.string.toast_spotify_streamer));
     }
 
     /**
@@ -51,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view that initiated this call
      */
     public void launchScoresApp(View view) {
-        Toast.makeText(this, "This button will launch Scores App!", Toast.LENGTH_SHORT).show();
+        showToast(getString(R.string.toast_scores_app));
     }
 
     /**
@@ -59,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view that initiated this call
      */
     public void launchLibraryApp(View view) {
-        Toast.makeText(this, "This button will launch Library App!", Toast.LENGTH_SHORT).show();
+        showToast(getString(R.string.toast_library_app));
     }
 
     /**
@@ -67,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view that initiated this call
      */
     public void launchBuildItBigger(View view) {
-        Toast.makeText(this, "This button will launch Build It Bigger!", Toast.LENGTH_SHORT).show();
+        showToast(getString(R.string.toast_build_it_bigger));
     }
 
     /**
@@ -75,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view that initiated this call
      */
     public void launchXyzReader(View view) {
-        Toast.makeText(this, "This button will launch XYZ Reader!", Toast.LENGTH_SHORT).show();
+        showToast(getString(R.string.toast_xyz_reader));
     }
 
     /**
@@ -83,6 +80,6 @@ public class MainActivity extends AppCompatActivity {
      * @param view that initiated this call
      */
     public void launchCapstone(View view) {
-        Toast.makeText(this, "This button will launch Capstone Project!", Toast.LENGTH_SHORT).show();
+        showToast(getString(R.string.toast_capstone_project));
     }
 }
